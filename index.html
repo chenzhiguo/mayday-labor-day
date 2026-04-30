@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五一国际劳动节 · 8小时的胜利</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap');
+
+        :root {
+            --red-primary: #C41E3A;
+            --red-dark: #8B0000;
+            --gold: #D4A843;
+            --gold-light: #F0D68A;
+            --cream: #FFF8E7;
+            --dark: #1A1A1A;
+            --text-muted: #666;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--dark);
+            color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #1a0000 0%, #2d0a0a 50%, #1a1a1a 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(196,30,58,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(212,168,67,0.1) 0%, transparent 50%);
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Animated gears in background */
+        .gear {
+            position: absolute;
+            border: 3px solid rgba(196,30,58,0.1);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+        .gear:nth-child(1) { width: 200px; height: 200px; top: 10%; left: -50px; }
+        .gear:nth-child(2) { width: 150px; height: 150px; top: 60%; right: -30px; animation-direction: reverse; animation-duration: 15s; }
+        .gear:nth-child(3) { width: 100px; height: 100px; bottom: 10%; left: 20%; animation-duration: 25s; }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .hammer-sickle {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            color: var(--red-primary);
+            text-shadow: 0 0 40px rgba(196,30,58,0.3);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--gold);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 0.3em;
+        }
+
+        .hero .year-badge {
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(212,168,67,0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(212,168,67,0); }
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s ease-in-out infinite;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .scroll-hint::after {
+            content: '↓';
+            display: block;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ===== TIMELINE SECTION ===== */
+        .timeline-section {
+            padding: 6rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--red-primary);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--red-primary), var(--red-primary), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            margin-right: 55%;
+            padding-right: 2rem;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+            padding-left: 2rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--red-primary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 4px var(--dark), 0 0 0 6px var(--red-primary);
+        }
+
+        .timeline-year {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.3rem;
+            color: var(--cream);
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* ===== WORKERS SECTION ===== */
+        .workers-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--dark) 0%, #0d0d0d 100%);
+        }
+
+        .workers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .worker-card {
+            background: linear-gradient(145deg, rgba(50,20,20,0.8), rgba(30,10,10,0.9));
+            border: 1px solid rgba(196,30,58,0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .worker-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(196,30,58,0.05), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .worker-card:hover::before {
+            left: 100%;
+        }
+
+        .worker-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--red-primary);
+            box-shadow: 0 10px 30px rgba(196,30,58,0.2);
+        }
+
+        .worker-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .worker-card h3 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .worker-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.9rem;
+        }
+
+        /* ===== QUOTE SECTION ===== */
+        .quote-section {
+            padding: 8rem 2rem;
+            text-align: center;
+            background: 
+                radial-gradient(ellipse at center, rgba(196,30,58,0.08) 0%, transparent 70%);
+            position: relative;
+        }
+
+        .quote {
+            max-width: 700px;
+            margin: 0 auto;
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            color: var(--cream);
+            line-height: 1.8;
+            position: relative;
+            padding: 0 2rem;
+        }
+
+        .quote::before,
+        .quote::after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--red-primary);
+            opacity: 0.5;
+            position: absolute;
+            font-family: Georgia, serif;
+        }
+
+        .quote::before { top: -1.5rem; left: -1rem; }
+        .quote::after { content: '"'; bottom: -2.5rem; right: -1rem; }
+
+        .quote-author {
+            margin-top: 2rem;
+            color: var(--gold);
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* ===== STATS SECTION ===== */
+        .stats-section {
+            padding: 5rem 2rem;
+            background: var(--red-dark);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+        }
+
+        /* ===== CLOSING SECTION ===== */
+        .closing-section {
+            padding: 8rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, #0d0d0d 0%, var(--dark) 100%);
+        }
+
+        .closing-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--red-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .closing-text {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .closing-badge {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, var(--red-primary), var(--red-dark));
+            color: var(--cream);
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.2em;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(196,30,58,0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(196,30,58,0.1);
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 50px;
+                margin-right: 0;
+                padding-left: 1.5rem;
+                padding-right: 0;
+                text-align: left;
+            }
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="gear"></div>
+        <div class="gear"></div>
+        <div class="gear"></div>
+        
+        <div class="hero-content">
+            <div class="hammer-sickle">⚒️</div>
+            <h1>五一国际劳动节</h1>
+            <p class="subtitle">八小时的胜利</p>
+            <div class="year-badge">1886 — 2026 · 一百四十年的抗争与荣光</div>
+        </div>
+        
+        <div class="scroll-hint">向下滚动，聆听历史的回响</div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section">
+        <h2 class="section-title">争取八小时工作制的血泪史</h2>
+        <p class="section-desc">从十六小时的黑暗到八小时的光明，每一步都浸透着劳动者的血汗与牺牲</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1817</div>
+                    <h3 class="timeline-title">罗伯特·欧文提出"八小时工作制"</h3>
+                    <p class="timeline-desc">英国空想社会主义者罗伯特·欧文首次提出"八小时劳动、八小时娱乐、八小时休息"的理想，成为工人运动的灯塔。</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1856</div>
+                    <h3 class="timeline-title">澳大利亚建筑工人罢工</h3>
+                    <p class="timeline-desc">墨尔本建筑工人举行大规模罢工，高举"八小时工作"旗帜，成为历史上首次有组织争取八小时工作制的斗争。</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1866</div>
+                    <h3 class="timeline-title">第一国际日内瓦大会</h3>
+                    <p class="timeline-desc">国际工人协会（第一国际）在日内瓦召开大会，正式将八小时工作制写入纲领，号召全世界工人联合起来争取这一权利。</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1886</div>
+                    <h3 class="timeline-title">芝加哥工人大罢工 —— "干草市场事件"</h3>
+                    <p class="timeline-desc">5月1日，美国35万工人举行全国性大罢工，要求实行八小时工作制。5月4日，芝加哥干草市场广场发生流血冲突，多名工人牺牲。这就是五一国际劳动节的由来。</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1889</div>
+                    <h3 class="timeline-title">第二国际确立"五一"国际劳动节</h3>
+                    <p class="timeline-desc">在恩格斯领导下，第二国际在巴黎成立，决定将每年5月1日定为国际劳动节，纪念芝加哥工人的英勇牺牲。</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1919</div>
+                    <h3 class="timeline-title">中国工人首次纪念五一</h3>
+                    <p class="timeline-desc">上海、北京等地工人首次举行五一纪念活动，高呼"八小时工作、八小时教育、八小时休息"的口号，工人运动在中国大地萌芽。</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1949</div>
+                    <h3 class="timeline-title">新中国确立劳动节法定假日</h3>
+                    <p class="timeline-desc">中华人民共和国成立后，将5月1日定为法定假日，八小时工作制成为国家法律，劳动者真正成为国家的主人。</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1995</div>
+                    <h3 class="timeline-title">《劳动法》正式实施</h3>
+                    <p class="timeline-desc">《中华人民共和国劳动法》正式实施，明确规定"国家实行劳动者每日工作时间不超过八小时"，八小时工作制有了法律保障。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKERS -->
+    <section class="workers-section">
+        <h2 class="section-title">劳动者的风采</h2>
+        <p class="section-desc">每一个岗位都值得尊重，每一滴汗水都闪耀光芒</p>
+        
+        <div class="workers-grid">
+            <div class="worker-card">
+                <div class="worker-icon">🏭</div>
+                <h3>产业工人</h3>
+                <p>钢铁洪流中的脊梁，用双手铸就工业的基石。从纺织机旁到智能车间，他们推动着时代的车轮滚滚向前。</p>
+            </div>
+            
+            <div class="worker-card">
+                <div class="worker-icon">🌾</div>
+                <h3>农民</h3>
+                <p>面朝黄土背朝天，春种秋收养活亿万人口。他们是大地的守护者，用汗水浇灌出金色的希望。</p>
+            </div>
+            
+            <div class="worker-card">
+                <div class="worker-icon">🏗️</div>
+                <h3>建筑工人</h3>
+                <p>万丈高楼平地起，他们是城市的缔造者。烈日下、风雨中，用血肉之躯筑起钢铁丛林。</p>
+            </div>
+            
+            <div class="worker-card">
+                <div class="worker-icon">🔬</div>
+                <h3>科研工作者</h3>
+                <p>实验室里的追光者，用智慧探索未知。从"两弹一星"到量子计算，他们让中国科技屹立世界之巅。</p>
+            </div>
+            
+            <div class="worker-card">
+                <div class="worker-icon">🏥</div>
+                <h3>医护人员</h3>
+                <p>白衣执甲，逆行出征。他们是生命的守护者，在没有硝烟的战场上，用仁心仁术诠释医者大爱。</p>
+            </div>
+            
+            <div class="worker-card">
+                <div class="worker-icon">📚</div>
+                <h3>教育工作者</h3>
+                <p>三尺讲台，一生耕耘。他们是灵魂的工程师，用知识点亮无数孩子的未来，薪火相传。</p>
+            </div>
+            
+            <div class="worker-card">
+                <div class="worker-icon">🚚</div>
+                <h3>快递外卖员</h3>
+                <p>城市毛细血管中的血液，风雨无阻送达每一份期待。他们是新经济时代的"铁人"，连接千家万户。</p>
+            </div>
+            
+            <div class="worker-card">
+                <div class="worker-icon">💻</div>
+                <h3>程序员</h3>
+                <p>数字世界的建筑师，用代码编织未来。在键盘的敲击声中，他们构建起支撑现代社会的数字基础设施。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="quote-section">
+        <div class="quote fade-in">
+            无产者在这个革命中失去的只是锁链。他们获得的将是整个世界。全世界无产者，联合起来！
+            <div class="quote-author">—— 卡尔·马克思、弗里德里希·恩格斯《共产党宣言》</div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="140">0</div>
+                <div class="stat-label">年的斗争历程</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="8">0</div>
+                <div class="stat-label">小时工作制的胜利</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="80">0</div>
+                <div class="stat-label">多个国家庆祝五一</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="1949">0</div>
+                <div class="stat-label">年新中国法定劳动节</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="closing-section">
+        <h2 class="closing-title fade-in">劳动最光荣</h2>
+        <p class="closing-text fade-in">
+            一百四十年前，先辈们用鲜血和生命换来了八小时工作制。今天，我们享受着他们的胜利果实，更应铭记：每一份权利都来之不易，每一个劳动者都值得尊重。
+        </p>
+        <div class="closing-badge fade-in">
+            五一国际劳动节快乐
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>谨以此页致敬每一位平凡而伟大的劳动者</p>
+        <p style="margin-top: 0.5rem;">劳动者万岁 · 劳动光荣</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe timeline items
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Observe fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        current += step;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+
+                    updateCounter();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-number').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-content');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+                hero.style.opacity = 1 - (scrolled / 600);
+            }
+        });
+    </script>
+
+</body>
+</html>
